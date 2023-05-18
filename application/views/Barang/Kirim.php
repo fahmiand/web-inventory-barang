@@ -31,7 +31,7 @@
                     <label for="toko">Pilih Toko</label>
                     <select class="form-control" id="toko" name="toko_id">
                         <?php foreach ($toko as $t) : ?>
-                            <option value="<?= $t['id'] ?>"><?= $t['nama_toko'] ?></option>
+                            <option value="<?= $t['nama_toko'] ?>"><?= $t['nama_toko'] ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
