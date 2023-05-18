@@ -7,6 +7,7 @@
             <?= form_open_multipart('barang/tambah'); ?>
             <div class="form-group">
                 <label for="nama">Nama Barang</label>
+                <input type="hidden" name="namapenginput" value="<?= $user['name'] ?>">
                 <input type="text" class="form-control" id="nama" name="nama" value="<?= set_value('nama') ?>">
                 <?= form_error('nama', '<small class="text-danger">', '</small>') ?>
             </div>
