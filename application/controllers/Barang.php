@@ -227,11 +227,15 @@ class Barang extends CI_Controller
             $nama = $this->input->post('nama');
             $toko = $this->input->post('toko_id');
             $jumlah = $this->input->post('jumlah');
-            $sisajumlah = $this->input->post('sisaJumlah');
             $pesan = $this->input->post('pesan');
+            $sisajumlah = $this->input->post('sisajumlah');
             $hasil = $sisajumlah - $jumlah;
 
-            if ($jumlah > $sisajumlah) {
+            echo $jumlah;
+            echo $sisajumlah;
+            die;
+
+            if ($sisajumlah <= $jumlah) {
 
                 $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <strong>Gagal!</strong> Dikirim jumlah yang dikirim melelebihi jumlah stok!
@@ -270,9 +274,8 @@ class Barang extends CI_Controller
                     <span aria-hidden="true">&times;</span>
                     </button>
                     </div>');
-                    $sisa = $sisajumlah - $jumlah;
                     $this->db->where('id', $id);
-                    $this->db->update('barang_masuk', ['jumlah' => $sisa]);
+                    $this->db->update('barang_masuk', ['jumlah' => $hasil]);
                     redirect('barang/out');
                 } else {
                     echo $this->upload->display_errors();

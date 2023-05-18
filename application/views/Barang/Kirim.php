@@ -9,7 +9,7 @@
                 <div class="list-group">
                     <fieldset disabled>
                         <label for="nama">Nama Barang</label>
-                        <input type="hidden" name="sisaJumlah" value="<?= $barang['jumlah'] ?>">
+                        <input type="text" name="sisajumlah" value="<?= $barang['jumlah'] ?>">
                         <input type="text" class="list-group-item" id="nama" name="nama" value="<?= set_value('nama'), $barang['nama'] ?>">
                         <?= form_error('nama', '<small class="text-danger">', '</small>') ?>
                     </fieldset>
