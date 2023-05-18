@@ -220,7 +220,8 @@ class Barang extends CI_Controller
             $jumlah = $this->input->post('jumlah');
             $sisajumlah = $this->input->post('sisaJumlah');
             $pesan = $this->input->post('pesan');
-            $hasil = $sisajumlah - $jumlah;
+
+
 
             if ($jumlah > $sisajumlah) {
 
@@ -234,41 +235,25 @@ class Barang extends CI_Controller
                 return false;
             }
 
-            $gambar = $_FILES['image']['name'];
+            $data = [
+                'nama' => $nama,
+                'toko_id' => $toko,
+                'jumlah' => $jumlah,
+                'date_out' => time() + (60 * 60 * 7),
+                'pesan' => $pesan
+            ];
 
-            if ($gambar) {
-                $config['upload_path']          = './assets/img/barang/';
-                $config['allowed_types']        = 'gif|jpg|png';
-                $config['max_size']             = 5028;
-
-                $this->load->library('upload', $config);
-
-                if ($this->upload->do_upload('image')) {
-                    $namaGambar = $this->upload->data('file_name');
-                    $data = [
-                        'nama' => $nama,
-                        'toko_id' => $toko,
-                        'jumlah' => $jumlah,
-                        'bukti' => $namaGambar,
-                        'date_out' => time() + (60 * 60 * 7),
-                        'pesan' => $pesan
-                    ];
-
-                    $this->db->insert('barang_keluar', $data);
-                    $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Berhasil!</strong> Berhasil Diatambahkan!
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>');
-                    $sisa = $sisajumlah - $jumlah;
-                    $this->db->where('id', $id);
-                    $this->db->update('barang_masuk', ['jumlah' => $sisa]);
-                    redirect('barang/out');
-                } else {
-                    echo $this->upload->display_errors();
-                }
-            }
+            $this->db->insert('barang_keluar', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Berhasil!</strong> Berhasil Diatambahkan!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>');
+            $hasil = $sisajumlah - $jumlah;
+            $this->db->where('id', $id);
+            $this->db->update('barang_masuk', ['jumlah' => $hasil]);
+            redirect('barang/out');
         }
     }
 }
