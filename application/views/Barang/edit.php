@@ -8,6 +8,7 @@
                 <div class="form-group">
                     <input type="hidden" name="id" value="<?= $barang['id'] ?>">
                     <input type="hidden" name="bukti" value="<?= $barang['bukti'] ?>">
+                    <input type="hidden" name="namapenginput" value="<?= $user['name'] ?>">
                     <label for="nama">Nama Barang</label>
                     <input type="text" class="form-control" id="nama" name="nama" value="<?= $barang['nama'] ?>">
                     <?= form_error('nama', '<small class="text-danger">', '</small>') ?>
