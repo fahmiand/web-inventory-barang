@@ -3,6 +3,7 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $judul ?></h1>
 
+    <a href="barang/cetakout" class="btn btn-warning">Cetak</a>
     <div class="row">
         <div class="col-lg">
             <div class="table-responsive-lg">

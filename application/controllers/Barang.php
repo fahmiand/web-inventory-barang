@@ -30,6 +30,15 @@ class Barang extends CI_Controller
         $this->pdf->load_view('Barang/cetak', $data);
     }
 
+    public function cetakOut()
+    {
+        $data['judul'] = 'Laporan Barang Keluar';
+        $data['barang'] = $this->barang->getBarangAll();
+        $this->pdf->setPaper('A4', 'portrait');
+        $this->pdf->filename = "Laporan-barang-masuk.pdf";
+        $this->pdf->load_view('Barang/cetakout', $data);
+    }
+
     public function out()
     {
         $data['judul'] = 'Barang Keluar';
