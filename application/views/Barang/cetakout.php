@@ -19,7 +19,6 @@
                             <th scope="col">No</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Jumlah</th>
-                            <th scope="col">Bukti</th>
                             <th scope="col">Tanggal</th>
                         </tr>
                     </thead>
@@ -30,19 +29,13 @@
                         foreach ($barang as $b) :
                             $i++;
 
-                            $path = base_url('assets/img/barang/') . $b['bukti'];
-                            $type = pathinfo($path, PATHINFO_EXTENSION);
-                            $data = file_get_contents($path);
-                            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
                         ?>
                             <tr>
                                 <th><?= $i ?></th>
                                 <td><?= $b['nama'] ?></td>
                                 <td><?= $b['jumlah'] ?> Carton</td>
-                                <td>
-                                    <img src="<?= $base64 ?>" alt="<?= $b['bukti'] ?>" width="150">
-                                </td>
-                                <td><?= date("d F Y | H:s:i", $b['date']) ?></td>
+                                <td><?= date("d F Y | H:s:i", $b['date_out']) ?></td>
                             </tr>
                         <?php endforeach; ?>
 

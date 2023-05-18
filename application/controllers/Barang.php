@@ -33,9 +33,9 @@ class Barang extends CI_Controller
     public function cetakOut()
     {
         $data['judul'] = 'Laporan Barang Keluar';
-        $data['barang'] = $this->barang->getBarangAll();
+        $data['barang'] = $this->barang->getBarangAllOut();
         $this->pdf->setPaper('A4', 'portrait');
-        $this->pdf->filename = "Laporan-barang-masuk.pdf";
+        $this->pdf->filename = "Laporan-barang-Keluar.pdf";
         $this->pdf->load_view('Barang/cetakout', $data);
     }
 
@@ -230,10 +230,6 @@ class Barang extends CI_Controller
             $pesan = $this->input->post('pesan');
             $sisajumlah = $this->input->post('sisajumlah');
             $hasil = $sisajumlah - $jumlah;
-
-            echo $jumlah;
-            echo $sisajumlah;
-            die;
 
             if ($sisajumlah <= $jumlah) {
 
