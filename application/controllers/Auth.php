@@ -47,7 +47,7 @@ class Auth extends CI_Controller
                         redirect('admin');
                     } else {
 
-                        redirect('user');
+                        redirect('barang/in');
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
