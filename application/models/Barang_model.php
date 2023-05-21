@@ -13,4 +13,9 @@ class Barang_model extends CI_Model
     {
         return $this->db->get('barang_masuk')->result_array();
     }
+
+    public function getBarangAllOut()
+    {
+        return $this->db->get('barang_keluar')->result_array();
+    }
 }

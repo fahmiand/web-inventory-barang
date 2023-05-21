@@ -30,6 +30,15 @@ class Barang extends CI_Controller
         $this->pdf->load_view('Barang/cetak', $data);
     }
 
+    public function cetakOut()
+    {
+        $data['judul'] = 'Laporan Barang Keluar';
+        $data['barang'] = $this->barang->getBarangAllOut();
+        $this->pdf->setPaper('A4', 'portrait');
+        $this->pdf->filename = "Laporan-barang-Keluar.pdf";
+        $this->pdf->load_view('Barang/cetakout', $data);
+    }
+
     public function out()
     {
         $data['judul'] = 'Barang Keluar';
@@ -222,12 +231,13 @@ class Barang extends CI_Controller
             $nama = $this->input->post('nama');
             $toko = $this->input->post('toko_id');
             $jumlah = $this->input->post('jumlah');
-            $sisajumlah = $this->input->post('sisaJumlah');
             $pesan = $this->input->post('pesan');
 
+            $sisajumlah = $this->input->post('sisajumlah');
+            $hasil = $sisajumlah - $jumlah;
 
 
-            if ($jumlah > $sisajumlah) {
+            if ($sisajumlah <= $jumlah) {
 
                 $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <strong>Gagal!</strong> Dikirim jumlah yang dikirim melelebihi jumlah stok!
