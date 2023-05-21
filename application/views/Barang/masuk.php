@@ -18,6 +18,7 @@
                             <th scope="col">Keterangan</th>
                             <th scope="col">Bukti</th>
                             <th scope="col">Tanggal Masuk</th>
+                            <th scope="col">Penginput</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -34,6 +35,7 @@
                                     <img src="<?= base_url('assets/img/barang/') . $bm['bukti'] ?>" width="100">
                                 </td>
                                 <td><?= gmdate('d F Y | H:i:s', $bm['date']) ?></td>
+                                <td><?= $bm['nama_admin'] ?></td>
                                 <td>
                                     <form action="hapus" method="post">
                                         <input type="hidden" name="id" value="<?= $bm['id'] ?>">

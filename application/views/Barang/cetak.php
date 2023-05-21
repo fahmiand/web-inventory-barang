@@ -21,6 +21,7 @@
                             <th scope="col">Jumlah</th>
                             <th scope="col">Bukti</th>
                             <th scope="col">Tanggal</th>
+                            <th scope="coll">Penginput</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,6 +44,7 @@
                                     <img src="<?= $base64 ?>" alt="<?= $b['bukti'] ?>" width="150">
                                 </td>
                                 <td><?= date("d F Y | H:s:i", $b['date']) ?></td>
+                                <td><?= $b['nama_admin'] ?></td>
                             </tr>
                         <?php endforeach; ?>
 

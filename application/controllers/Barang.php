@@ -64,6 +64,7 @@ class Barang extends CI_Controller
             $nama = $this->input->post('nama');
             $jumlah = $this->input->post('jumlah');
             $keterangan = $this->input->post('ket');
+            $namaPenginput = $this->input->post('namapenginput');
 
             $gambar = $_FILES['image']['name'];
 
@@ -81,7 +82,8 @@ class Barang extends CI_Controller
                         'jumlah' => $jumlah,
                         'bukti' => $namaGambar,
                         'ket' => $keterangan,
-                        'date' => time() + (60 * 60 * 7)
+                        'date' => time() + (60 * 60 * 7),
+                        'nama_admin' => $namaPenginput
                     ];
 
                     $this->db->insert('barang_masuk', $data);
@@ -121,8 +123,8 @@ class Barang extends CI_Controller
             $jumlah = $this->input->post('jumlah');
             $keterangan = $this->input->post('ket');
             $image = $_FILES['image']['name'];
-            // var_dump($image);
-            // die;
+            $namaPenginput = $this->input->post('namapenginput');
+
 
 
 
@@ -131,7 +133,8 @@ class Barang extends CI_Controller
                     'id' => $id,
                     'nama' => $nama,
                     'jumlah' => $jumlah,
-                    'ket' => $keterangan
+                    'ket' => $keterangan,
+                    'nama_admin' => $namaPenginput
                 ];
                 $this->db->where('id', $id);
                 $this->db->update('barang_masuk', $data);
@@ -160,7 +163,8 @@ class Barang extends CI_Controller
                             'nama' => $nama,
                             'jumlah' => $jumlah,
                             'bukti' => $namaGambarBaru,
-                            'ket' => $keterangan
+                            'ket' => $keterangan,
+                            'nama_admin' => $namaPenginput
                         ];
 
                         $this->db->where('id', $id);
