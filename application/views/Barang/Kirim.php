@@ -12,7 +12,7 @@
                     <?= form_error('nama', '<small class="text-danger">', '</small>') ?>
                 </div>
                 <input type="hidden" name="id" value="<?= $barang['id'] ?>">
-                <input type="hidden" name="sisaJumlah" value="<?= $barang['jumlah'] ?>">
+                <input type="hidden" name="sisajumlah" value="<?= $barang['jumlah'] ?>">
                 <div class="form-group">
                     <label for="jumlah">Jumlah Barang</label>
                     <input type="number" class="form-control" id="jumlah" name="jumlah" value="<?= set_value('jumlah') ?>">
